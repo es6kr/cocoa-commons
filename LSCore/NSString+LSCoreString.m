@@ -7,6 +7,7 @@
 #import "NSString+LSCoreString.h"
 #import <uiKit/NSAttributedString.h>
 #import <Foundation/NSAttributedString.h>
+#import "NSData+LSData.h"
 
 
 @implementation NSString(LSCoreString)
@@ -18,6 +19,10 @@
 
 - (BOOL)isBlank {
     return [self trim].length == 0;
+}
+
+- (id)JSONObject {
+    return [[self dataUsingEncoding:NSUTF8StringEncoding] JSONObject];
 }
 
 - (NSString *)localize {

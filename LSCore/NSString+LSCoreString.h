@@ -7,6 +7,7 @@
 
 - (NSString *)escape;
 - (BOOL)isBlank;
+- (id)JSONObject;
 - (NSString *)localize;
 + (NSString *)localizedStringForKeyAndArguments:(NSString *)key, ...;
 - (BOOL)matchesWithPattern:(NSString *)expression;

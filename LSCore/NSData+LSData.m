@@ -18,4 +18,31 @@
     return string;
 }
 
+- (id)JSONObject {
+    NSError *error;
+    id jsonObject = [NSJSONSerialization JSONObjectWithData:self options:NSJSONReadingMutableContainers | NSJSONReadingMutableLeaves | NSJSONReadingAllowFragments error:&error];
+    if(error){
+        NSLog(@"JSON reading error: %@", error);
+    }
+    return jsonObject;
+}
+
+- (NSString *)UTF8String {
+    return [[NSString alloc] initWithData:self encoding:NSUTF8StringEncoding];
+}
+
+@end
+
+
+@implementation NSObject (LSData)
+
+- (NSData *)JSONData {
+    NSError *error;
+    NSData *data = [NSJSONSerialization dataWithJSONObject:self options:0 error:&error];
+    if(error){
+        NSLog(@"JSON writing error: %@", error);
+    }
+    return data;
+}
+
 @end
